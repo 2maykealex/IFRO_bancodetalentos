@@ -58,7 +58,7 @@ def login():
 @app.route('/protected')
 @flask_login.login_required
 def protected():
-    return 'Logged in as: ' + flask_login.current_user.id
+    return render_template('home.html') #'Logged in as: ' + flask_login.current_user.id
 
 @app.route('/')
 @app.route('/login')
