@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<head>
- <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+{% extends 'base.html' %}
 
- <title>
-    PROJETO INTEGRADOR
- </title>
-</head>
-<body>
-    
+{% block titulo %} Index - {% endblock %}
+
+{% block conteudo %}
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -27,26 +21,7 @@
                     </form>
             </div>
         </div>
-        
-
-        <!-- <form method="post" action="/login">
-            <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-            </div>
-            <div class="form-check">
-            <label class="form-check-label">
-                <input type="checkbox" class="form-check-input">
-                Check me out
-            </label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form> -->
     </div>
-    
-</body>
+{% endblock %}
+
+
