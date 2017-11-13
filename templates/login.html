@@ -3,7 +3,7 @@
 {% block titulo %} Index - {% endblock %}
 
 {% block conteudo %}
-    <div class="container">
+    <!-- <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <h1>LOGIN</h1>
@@ -21,7 +21,24 @@
                     </form>
             </div>
         </div>
-    </div>
+    </div> -->
+
+    <div class="container">
+        <form class="form-signin" method="post" action="/login">
+        <h2 class="form-signin-heading">Favor fazer login</h2>
+        <label for="inputEmail" class="sr-only">Email</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu Email" required autofocus>
+        <label for="inputPassword" class="sr-only">Senha</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Digite sua senha" required>
+        <div class="checkbox">
+            <label>
+            <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+
+    </div> <!-- /container -->
 {% endblock %}
 
 

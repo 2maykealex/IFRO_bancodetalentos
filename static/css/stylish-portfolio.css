@@ -20,6 +20,11 @@ body {
   background-size: cover;
 }
 
+.center_div{
+  margin: 0 auto;
+  width:80% /* value of your choice which suits your alignment */
+}
+
 .text-vertical-center {
   display: table-cell;
   text-align: center;
