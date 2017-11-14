@@ -40,6 +40,10 @@ def request_loader(request):
 
     return user
 
+@app.route('/fale_conosco')
+def fale_conosco():
+    return render_template('fale_conosco.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
