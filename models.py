@@ -1,10 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-from app import app
-
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.sqlite3'
-
-db = SQLAlchemy(app)
+from app import db
 
 class Pessoa(db.Model):
     id = db.Column('pessoa_id', db.Integer, primary_key=True)

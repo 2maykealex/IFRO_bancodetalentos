@@ -1,9 +1,17 @@
-
-from flask import Flask, render_template, request, url_for, redirect
+import os
+from flask import Flask, render_template, request, url_for, redirect, flash
 import flask_login
+import models
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.secret_key = 'super secret string' #Change this!
+
+
+db = SQLAlchemy(app) #db é uma instância de SQLAlchemy
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aluno:alunoifro@localhost/bancodetalentos'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config['SECURITY_REGISTERABLE'] = True
 
 
 login_manager = flask_login.LoginManager()
@@ -40,6 +48,29 @@ def request_loader(request):
 
     return user
 
+
+@app.route('/criar_tabelas')
+def criar_tabelas():
+    db.create_all()
+    flash('criado com sucesso')
+
+    return redirect(url_for('index'))
+
+@app.route('/remover_tabelas')
+def remover_tabelas():
+ db.drop_all()
+ flash('removido com sucesso')
+ return redirect(url_for('index'))
+
+@app.route('/post_user', methods=['POST'])
+def post_user():
+ user = models.User(request.form['username'], request.form['email'])
+ models.db.session.add(user)
+ models.db.session.commit()
+ flash('Usuario criado com sucesso')
+ return redirect(url_for('index'))
+
+
 @app.route('/fale_conosco')
 def fale_conosco():
     return render_template('fale_conosco.html')
@@ -62,7 +93,7 @@ def login():
 @app.route('/protected')
 @flask_login.login_required
 def protected():
-    return render_template('home.html') #'Logged in as: ' + flask_login.current_user.id
+    return render_template('home.html', flask_login.current_user.id) #'Logged in as: ' + flask_login.current_user.id
 
 @app.route('/')
 @app.route('/login')
