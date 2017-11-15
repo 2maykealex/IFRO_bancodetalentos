@@ -75,6 +75,10 @@ def post_user():
 def fale_conosco():
     return render_template('fale_conosco.html')
 
+@app.route('/saiba_mais')
+def saiba_mais():
+    return render_template('saiba_mais.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
