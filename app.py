@@ -38,7 +38,7 @@ def user_loader(email):
 def request_loader(request):
     email = request.form.get('email')
     if email not in users:
-        return render_template('login.html')
+        return #'Não existe o e-mail {} cadastrado no banco'.format(email)
 
     user = User()
     user.id = email
@@ -71,6 +71,14 @@ def post_user():
  flash('Usuario criado com sucesso')
  return redirect(url_for('index'))
 
+
+@app.route('/cadAluno')
+def cadAluno():
+    return render_template('cadAluno.html')
+
+@app.route('/cadEmpresa')
+def cadEmpresa():
+    return render_template('cadEmpresa.html')
 
 @app.route('/fale_conosco')
 def fale_conosco():
