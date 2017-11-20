@@ -72,15 +72,6 @@ def post_user():
  return redirect(url_for('index'))
 
 
-@app.route('/post_aluno', methods=['POST'])
-def post_aluno():
- aluno = models.User(request.form['username'], request.form['email'])
- models.db.session.add(aluno)
- models.db.session.commit()
- flash('Aluno registrado com sucesso!')
- return redirect(url_for('index'))
-
-
 @app.route('/cadAluno')
 def cadAluno():
     return render_template('cadAluno.html')
