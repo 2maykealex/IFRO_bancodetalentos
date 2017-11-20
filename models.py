@@ -16,6 +16,27 @@ class Pessoa(db.Model):
     def __repr__(self):
         return '<Pessoa %r>' % self.nome
 
+class Aluno(Pessoa):
+    #id = db.Column(db.Integer, primary_key=True)
+    cpf = db.Column(db.String(11))
+    matricula = db.Column(db.Integer, primary_key=True)
+
+    # chaves estrangeiras
+    pessoa_id = db.Column(db.String(15), db.ForeignKey('pessoa.id'))
+
+    def __init__(self, cpf, matricula, nome, email, password, tipo):        
+        self.cpf = cpf
+        self.matricula = matricula
+
+        super().__init__(nome, email, password, tipo)
+
+        # super().nome = nome
+        # super().email = email
+        # super().password = password
+
+    def __repr__(self):
+        return '<Aluno %r>' % self.matricula
+
 class Telefone(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     telefone = db.Column(db.String(15))
