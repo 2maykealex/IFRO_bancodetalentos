@@ -97,6 +97,10 @@ def fale_conosco():
 def saiba_mais():
     return render_template('saiba_mais.html')
 
+@app.route('/home_visitante')
+def home_visitante():
+    return render_template('home_visit.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
