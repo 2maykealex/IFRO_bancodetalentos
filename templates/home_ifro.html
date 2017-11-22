@@ -1,26 +1,47 @@
 {% extends 'base.html' %}
-
 {% block titulo %} Home {% endblock %}
-
 {% block conteudo %}
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8">
-                    <img class="img-fluid" src="../static/img/if_logo.png" width="100" height="100">
 
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Cadastro de Aluno</a>
+              <a class="dropdown-item" href="#">Cadastro de Empresas</a>
+              <a class="dropdown-item" href="#">Cadastro de Vagas</a>
+                <a class="dropdown-item" href="#">Cadastro de Campos</a>
+                <a class="dropdown-item" href="#">Cadastro de um Curso de um Campo</a>
+                <a class="dropdown-item" href="#">Cadastro de Andamentos dos Processos </a>
+                <a class="dropdown-item" href="#">Visualização de Relatórios</a>
+                <a class="dropdown-item" href="#">Registrar Novo Usúario</a>
             </div>
-        </div>
-    </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
 
-    
-    
-
-
-
-
-
-   
 
 
 {% endblock %}
+
