@@ -74,7 +74,7 @@ def post_user():
 
 @app.route('/post_aluno', methods=['POST'])
 def post_aluno():
- aluno = models.User(request.form['username'], request.form['email'])
+ aluno = models.Pessoa(request.form['email'], request.form['password'])
  models.db.session.add(aluno)
  models.db.session.commit()
  flash('Aluno registrado com sucesso!')
