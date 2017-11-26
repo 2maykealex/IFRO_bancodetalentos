@@ -1,18 +1,16 @@
 from app import db
-from sqlalchemy.ext.associationproxy import association_proxy
+#from sqlalchemy.ext.associationproxy import association_proxy
+
 
 class Pessoa(db.Model):
     __tablename__ = "pessoas"
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, autoincrement = True, primary_key=True)
     nome = db.Column(db.String(100))
     email = db.Column(db.String(100))
     password = db.Column(db.String(10))
     tipo = db.Column(db.Integer)   # 1 para IFRO - 2 para VISITANTE
 
-
-
-    telefones = db.relationship("Telefone", backref="Pessoa", lazy='dynamic')
-    telefones = db.relationship("Telefone", backref="Pessoa", lazy='dynamic')
+    telefones = db.relationship("Telefone", backref="pessoa", lazy='dynamic')
     #enderecos = db.relationship("Endereco", backref="Pessoa", lazy='dynamic')
 
     #telefones = association_proxy('user_newsletters', 'newsletter')
@@ -26,30 +24,6 @@ class Pessoa(db.Model):
     def __repr__(self):
         return '<Pessoa %r>' % self.nome
 
-class Aluno(Pessoa):
-    __tablename__ = "alunos"
-    #id = db.Column(db.Integer, primary_key=True)
-    cpf = db.Column(db.String(11))
-    matricula = db.Column(db.Integer, primary_key=True)
-
-    # chaves estrangeiras
-    pessoa_id = db.Column(db.Integer, db.ForeignKey('pessoas.id'))
-
-    alunos = db.relationship('Pessoa')
-
-    def __init__(self, cpf, matricula, nome, email, password, tipo):
-        self.cpf = cpf
-        self.matricula = matricula
-
-        super().__init__(nome, email, password, tipo)
-
-        # super().nome = nome
-        # super().email = email
-        # super().password = password
-
-    def __repr__(self):
-        return '<Aluno %r>' % self.nome
-
 class Telefone(db.Model):
     __tablename__ = "telefones"
     id = db.Column(db.Integer, primary_key=True)
@@ -60,7 +34,7 @@ class Telefone(db.Model):
 
     #telefones = relationship('Pessoa', backref= 'Telefone')
 
-    pessoa = db.relationship('Pessoa', enable_typechecks=False)
+    #pessoa = db.relationship('Pessoa', enable_typechecks=False)
 
     def __init__(self, telefone):
         self.telefone = telefone
@@ -108,7 +82,32 @@ class Telefone(db.Model):
 #
 #     def __repr__(self):
 #         return '<Endereco %r>' % self.endereco
-#
+
+class Aluno(Pessoa):
+    __tablename__ = "alunos"
+    #id = db.Column(db.Integer, autoincrement = True, primary_key=True)
+    cpf = db.Column(db.String(11))
+    matricula = db.Column(db.Integer, primary_key=True)
+
+    # chaves estrangeiras
+    pessoa_id = db.Column(db.Integer, db.ForeignKey('pessoas.id'))
+
+    alunos = db.relationship('Pessoa')
+
+    def __init__(self, cpf, matricula, nome, email, password, tipo):
+        self.cpf = cpf
+        self.matricula = matricula
+
+        super().__init__(nome, email, password, tipo)
+
+        # super().nome = nome
+        # super().email = email
+        # super().password = password
+
+    def __repr__(self):
+        return '<Aluno %r>' % self.nome
+
+
 # class Cidade(db.Model):
 #     __tablename__ = "cidades"
 #     id   = db.Column(db.Integer, primary_key=True)
