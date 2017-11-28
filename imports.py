@@ -18,8 +18,8 @@ db.drop_all()
 db.create_all()
 
 
-tel1 = Telefone(telefone='6932234455')
-tel2 = Telefone(telefone='6995821422')
+tel1 = Telefone('6932234455')
+tel2 = Telefone('6995821422')
 
 
 aluno = Aluno('22222222222', '12345', 'mayke', 'mayke.suporte@gmail.com','123', 1)
