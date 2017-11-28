@@ -22,7 +22,7 @@ class Pessoa(db.Model):
         self.tipo = tipo
 
     def __repr__(self):
-        return '<Pessoa %r>' % self.nome
+        return '<Pessoa %r %r %r>' % (self.nome, self.email, self.tipo)
 
 class Telefone(db.Model):
     __tablename__ = "telefones"
@@ -40,7 +40,7 @@ class Telefone(db.Model):
         self.telefone = telefone
 
     def __repr__(self):
-        return '<Telefone %r>' % self.telefone
+        return '<Telefone %r %r>' % (self.telefone, self.pessoa_id)
 
 # class Email(db.Model):
 #     __tablename__ = "emails"
