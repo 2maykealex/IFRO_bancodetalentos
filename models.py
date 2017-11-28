@@ -11,7 +11,8 @@ class Pessoa(db.Model):
     tipo = db.Column(db.Integer)   # 1 para IFRO - 2 para VISITANTE
 
     telefones = db.relationship("Telefone", backref="pessoa", lazy='dynamic')
-    #enderecos = db.relationship("Endereco", backref="Pessoa", lazy='dynamic')
+    #enderecos = db.relationship("Endereco", backref="pessoa", lazy='dynamic')
+    emails    = db.relationship("Email",    backref="pessoa", lazy='dynamic')
 
     #telefones = association_proxy('user_newsletters', 'newsletter')
 
@@ -32,32 +33,26 @@ class Telefone(db.Model):
     # chaves estrangeiras
     pessoa_id = db.Column(db.Integer, db.ForeignKey('pessoas.id'))
 
-    #telefones = relationship('Pessoa', backref= 'Telefone')
-
-    #pessoa = db.relationship('Pessoa', enable_typechecks=False)
-
     def __init__(self, telefone):
         self.telefone = telefone
 
     def __repr__(self):
         return '<Telefone %r %r>' % (self.telefone, self.pessoa_id)
 
-# class Email(db.Model):
-#     __tablename__ = "emails"
-#     id = db.Column(db.Integer, primary_key=True)
-#     email = db.Column(db.String(60))
-#
-#     # chaves estrangeiras
-#     pessoa_id = db.Column(db.String(15), db.ForeignKey('pessoas.id'))
-#
-#     emails = relationship('Pessoa', backref= 'Email')
-#
-#     def __init__(self, email):
-#         self.email = email
-#
-#     def __repr__(self):
-#         return '<Email %r>' % self.email
-#
+class Email(db.Model):
+     __tablename__ = "emails"
+     id = db.Column(db.Integer, primary_key=True)
+     email = db.Column(db.String(60))
+
+     # chaves estrangeiras
+     pessoa_id = db.Column(db.String(15), db.ForeignKey('pessoas.id'))
+
+     def __init__(self, email):
+         self.email = email
+
+     def __repr__(self):
+         return '<Email %r>' % self.email
+
 
 # class Endereco(db.Model):
 #     __tablename__ = "enderecos"
