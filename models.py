@@ -1,6 +1,4 @@
 from app import db
-
-
 # from sqlalchemy.ext.associationproxy import association_proxy
 
 
@@ -11,14 +9,11 @@ class Pessoa(db.Model):
     
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     nome = db.Column(db.String(100))
-    email = db.Column(db.String(100))
-    password = db.Column(db.String(10))
-    tipo = db.Column(db.Integer)  # 1 para IFRO - 2 para VISITANTE
-
 
     # enderecos = db.relationship("Endereco", backref="pessoa", lazy='dynamic')
     telefones = db.relationship("Telefone", backref="pessoa-telefones", lazy='dynamic')
     emails    = db.relationship("Email", backref="pessoa-emails", lazy='dynamic')
+    user      = db.relationship("Usuario", backref="pessoa-usuario", uselist=False)
 
     # telefones = association_proxy('user_newsletters', 'newsletter')
 
@@ -34,6 +29,23 @@ class Pessoa(db.Model):
     def getTelefones(self):
         for telefone in Pessoa.telefones:
             print(self.nome, ' - ', telefone)
+
+class Usuario(db.Model):
+    __tablename__ = "usuarios"    
+    id = db.Column(db.Integer, primary_key=True)
+    user = db.Column(db.String(15), unique= True)
+    password = db.Column(db.String(10))
+    tipo = db.Column(db.Integer)  # 1 para IFRO - 2 para VISITANTE
+
+    # chaves estrangeiras
+    pessoa_id = db.Column(db.Integer, db.ForeignKey('pessoas.id'))
+
+    #relacionamento one2one
+    #pessoa = db.relationship("Pessoa", backref="usuario-pessoa")
+
+    def __init__(self, user, password):
+        self.user = user
+        self.password = password
 
 class Aluno(Pessoa):
     __tablename__ = "alunos"
@@ -66,7 +78,6 @@ class Aluno(Pessoa):
     def __repr__(self):
         return '<Aluno %r>' % self.nome
 
-
 class Telefone(db.Model):
     __tablename__ = "telefones"
     id = db.Column(db.Integer, primary_key=True)
@@ -80,7 +91,6 @@ class Telefone(db.Model):
 
     def __repr__(self):
         return '<Telefone %r %r>' % (self.telefone, self.pessoa_id)
-
 
 class Email(db.Model):
     __tablename__ = "emails"
