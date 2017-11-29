@@ -1,20 +1,22 @@
 from app import db
-#from sqlalchemy.ext.associationproxy import association_proxy
+
+
+# from sqlalchemy.ext.associationproxy import association_proxy
 
 
 class Pessoa(db.Model):
     __tablename__ = "pessoas"
-    id = db.Column(db.Integer, autoincrement = True, primary_key=True)
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     nome = db.Column(db.String(100))
     email = db.Column(db.String(100))
     password = db.Column(db.String(10))
-    tipo = db.Column(db.Integer)   # 1 para IFRO - 2 para VISITANTE
+    tipo = db.Column(db.Integer)  # 1 para IFRO - 2 para VISITANTE
 
-    telefones = db.relationship("Telefone", backref="pessoa", lazy='dynamic')
-    #enderecos = db.relationship("Endereco", backref="pessoa", lazy='dynamic')
-    emails    = db.relationship("Email",    backref="pessoa", lazy='dynamic')
 
-    #telefones = association_proxy('user_newsletters', 'newsletter')
+    # enderecos = db.relationship("Endereco", backref="pessoa", lazy='dynamic')
+    emails = db.relationship("Email", backref="pessoa", lazy='dynamic')
+
+    # telefones = association_proxy('user_newsletters', 'newsletter')
 
     def __init__(self, nome, email, password, tipo):
         self.nome = nome
@@ -25,13 +27,14 @@ class Pessoa(db.Model):
     def __repr__(self):
         return '<Pessoa %r %r %r>' % (self.nome, self.email, self.tipo)
 
+
 class Telefone(db.Model):
     __tablename__ = "telefones"
     id = db.Column(db.Integer, primary_key=True)
     telefone = db.Column(db.String(15))
-    
+
     # chaves estrangeiras
-    pessoa_id = db.Column(db.Integer, db.ForeignKey('pessoas.id'))
+    pessoa_id = db.Column(db.Integer, db.ForeignKey('alunos.matricula'))
 
     def __init__(self, telefone):
         self.telefone = telefone
@@ -39,19 +42,20 @@ class Telefone(db.Model):
     def __repr__(self):
         return '<Telefone %r %r>' % (self.telefone, self.pessoa_id)
 
+
 class Email(db.Model):
-     __tablename__ = "emails"
-     id = db.Column(db.Integer, primary_key=True)
-     email = db.Column(db.String(60))
+    __tablename__ = "emails"
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(60))
 
-     # chaves estrangeiras
-     pessoa_id = db.Column(db.String(15), db.ForeignKey('pessoas.id'))
+    # chaves estrangeiras
+    pessoa_id = db.Column(db.String(15), db.ForeignKey('pessoas.id'))
 
-     def __init__(self, email):
-         self.email = email
+    def __init__(self, email):
+        self.email = email
 
-     def __repr__(self):
-         return '<Email %r>' % self.email
+    def __repr__(self):
+        return '<Email %r>' % self.email
 
 
 # class Endereco(db.Model):
@@ -78,22 +82,23 @@ class Email(db.Model):
 #     def __repr__(self):
 #         return '<Endereco %r>' % self.endereco
 
-class Aluno(Pessoa):
+class Aluno(db.Model):
     __tablename__ = "alunos"
-    #id = db.Column(db.Integer, autoincrement = True, primary_key=True)
+    # id = db.Column(db.Integer, autoincrement = True, primary_key=True)
     cpf = db.Column(db.String(11))
     matricula = db.Column(db.Integer, primary_key=True)
 
     # chaves estrangeiras
     pessoa_id = db.Column(db.Integer, db.ForeignKey('pessoas.id'))
 
-    alunos = db.relationship('Pessoa')
+    #rel
+    telefones = db.relationship("Telefone", backref="tel-aluno", lazy='dynamic')
 
     def __init__(self, cpf, matricula, nome, email, password, tipo):
         self.cpf = cpf
         self.matricula = matricula
 
-        super().__init__(nome, email, password, tipo)
+        super().__init__()
 
         # super().nome = nome
         # super().email = email
@@ -101,7 +106,6 @@ class Aluno(Pessoa):
 
     def __repr__(self):
         return '<Aluno %r>' % self.nome
-
 
 # class Cidade(db.Model):
 #     __tablename__ = "cidades"
@@ -137,7 +141,6 @@ class Aluno(Pessoa):
 
 
 
-    
 
 
 

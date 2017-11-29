@@ -25,9 +25,8 @@ tel2 = Telefone('6995821422')
 aluno = Aluno('22222222222', '12345', 'mayke', 'mayke.suporte@gmail.com','123', 1)
 aluno.telefones.append(tel1)
 aluno.telefones.append(tel2)
+
 db.session.add(aluno)
-db.session.add(tel1)
-db.session.add(tel2)
 db.session.commit()
 
 # or
