@@ -6,6 +6,9 @@ from app import db
 
 class Pessoa(db.Model):
     __tablename__ = "pessoas"
+    __table_args__ = {'extend_existing': True} 
+    __mapper_args__ = {'polymorphic_identity': 'pessoa'}
+    
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     nome = db.Column(db.String(100))
     email = db.Column(db.String(100))
@@ -27,6 +30,37 @@ class Pessoa(db.Model):
     def __repr__(self):
         return '<Pessoa %r %r %r>' % (self.nome, self.email, self.tipo)
 
+class Aluno(Pessoa):
+    __tablename__ = "alunos"
+    __table_args__ = {'extend_existing': True} 
+    __mapper_args__ = {'polymorphic_identity': 'aluno'}
+
+    # id = db.Column(db.Integer, autoincrement = True, primary_key=True)
+    id = db.Column(db.Integer, db.ForeignKey('pessoas.id'), primary_key=True)
+
+    # id = db.Column(db.Integer, autoincrement = True, primary_key=True)
+    cpf = db.Column(db.String(11))
+    matricula = db.Column(db.Integer)
+
+    # chaves estrangeiras
+    #pessoa_id = db.Column(db.Integer, db.ForeignKey('pessoas.id'))
+
+    #rel
+    telefones = db.relationship("Telefone", backref="tel-aluno", lazy='dynamic')
+
+    def __init__(self, cpf, matricula, nome, email, password, tipo):
+        self.cpf = cpf
+        self.matricula = matricula
+
+        super().__init__(nome, email, password, tipo)
+
+        # super().nome = nome
+        # super().email = email
+        # super().password = password
+
+    def __repr__(self):
+        return '<Aluno %r>' % self.nome
+
 
 class Telefone(db.Model):
     __tablename__ = "telefones"
@@ -34,7 +68,7 @@ class Telefone(db.Model):
     telefone = db.Column(db.String(15))
 
     # chaves estrangeiras
-    pessoa_id = db.Column(db.Integer, db.ForeignKey('alunos.matricula'))
+    pessoa_id = db.Column(db.Integer, db.ForeignKey('pessoas.id'))
 
     def __init__(self, telefone):
         self.telefone = telefone
@@ -82,30 +116,7 @@ class Email(db.Model):
 #     def __repr__(self):
 #         return '<Endereco %r>' % self.endereco
 
-class Aluno(db.Model):
-    __tablename__ = "alunos"
-    # id = db.Column(db.Integer, autoincrement = True, primary_key=True)
-    cpf = db.Column(db.String(11))
-    matricula = db.Column(db.Integer, primary_key=True)
 
-    # chaves estrangeiras
-    pessoa_id = db.Column(db.Integer, db.ForeignKey('pessoas.id'))
-
-    #rel
-    telefones = db.relationship("Telefone", backref="tel-aluno", lazy='dynamic')
-
-    def __init__(self, cpf, matricula, nome, email, password, tipo):
-        self.cpf = cpf
-        self.matricula = matricula
-
-        super().__init__()
-
-        # super().nome = nome
-        # super().email = email
-        # super().password = password
-
-    def __repr__(self):
-        return '<Aluno %r>' % self.nome
 
 # class Cidade(db.Model):
 #     __tablename__ = "cidades"
