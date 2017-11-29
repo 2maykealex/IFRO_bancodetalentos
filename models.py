@@ -17,7 +17,8 @@ class Pessoa(db.Model):
 
 
     # enderecos = db.relationship("Endereco", backref="pessoa", lazy='dynamic')
-    emails = db.relationship("Email", backref="pessoa", lazy='dynamic')
+    telefones = db.relationship("Telefone", backref="pessoa-telefones", lazy='dynamic')
+    emails    = db.relationship("Email", backref="pessoa-emails", lazy='dynamic')
 
     # telefones = association_proxy('user_newsletters', 'newsletter')
 
@@ -29,6 +30,10 @@ class Pessoa(db.Model):
 
     def __repr__(self):
         return '<Pessoa %r %r %r>' % (self.nome, self.email, self.tipo)
+
+    def getTelefones(self):
+        for telefone in Pessoa.telefones:
+            print(self.nome, ' - ', telefone)
 
 class Aluno(Pessoa):
     __tablename__ = "alunos"
