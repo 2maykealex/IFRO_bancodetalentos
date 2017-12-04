@@ -1,0 +1,35 @@
+{% extends 'base_ifro.html' %}
+
+{% block titulo %} Index - {% endblock %}
+
+{% block conteudo %}
+
+<br>
+<br>
+
+<div class="container" >
+    <div class="row">
+        <div class="col-md-12" style="background: cadetblue">     <!--  -->
+            <h1>Lista de Vagas</h1>
+            <table class="table table-hover">
+                <tr>
+                    <th>Data</th>
+                    <th>Status</th>
+                    <th>Descricao</th>
+                    <th>Remuneração</th>
+                </tr>
+
+                {% for vaga in vagas: %}
+                <tr>
+                    <td>{{ vaga.data_inicio }}</td>
+                    <td>{{ vaga.status }}</td>
+                    <td>{{ vaga.descricao }}</td>
+                    <td>{{ vaga.remuneracao }}</td>
+                </tr>    
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

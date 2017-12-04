@@ -10,6 +10,8 @@ from models import Estado
 import models
 from models import Pessoa
 from models import Aluno
+from models import Empresa
+from models import Vaga
 import app
 from app import db
 db.drop_all()
@@ -31,3 +33,16 @@ aluno.telefone = '69 9 9246-1190'
 
 db.session.add(aluno)
 db.session.commit()
+
+
+vaga = models.Vaga()
+vaga.data_inicio = '04/12/2014'
+vaga.status      = 'ABERTA'
+vaga.descricao   = 'tecnico em informatica'
+vaga.remuneracao = '3000,00'
+vaga.beneficios  = 'VA VT VR SAUDE'
+
+
+db.session.add(vaga)
+db.session.commit()
+

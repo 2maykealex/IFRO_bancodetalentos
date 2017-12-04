@@ -33,6 +33,8 @@
                         <a class="dropdown-item" href="/cadAluno">Cadastro de Aluno</a>
                         <a class="dropdown-item" href="/cadEmpresa">Cadastro de Empresas</a>
                         <a class="dropdown-item" href="/cadVaga">Cadastro de Vagas</a>
+                    
+                    
         
         
                         <!-- <a class="dropdown-item" href="#">Cadastro de Campos</a>
@@ -43,11 +45,17 @@
                     </div>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-                </div>
+
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav mr-auto">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Relatórios</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown02">
+                        <a class="dropdown-item" href="/listarAlunos">Lista de Aluno</a>
+                        <a class="dropdown-item" href="/listarEmpresas">Lista de Empresas</a>
+                        <a class="dropdown-item" href="/listarVagas">Lista de Vagas</a>
+                        
+                    </div>
             </nav>
 
  {% block conteudo %} 

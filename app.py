@@ -101,6 +101,20 @@ def post_empresa():
     flash('Empresa registrada com sucesso!')
     return redirect(url_for('listarEmpresas'))
 
+@app.route('/post_vaga', methods=['POST']) #salvar um aluno no banco
+def post_vaga():
+    vaga = models.Vaga()
+    vaga.data_inicio = '04/12/2014'
+    vaga.status      = 'ABERTA'
+    vaga.descricao   = request.form['descricao']
+    vaga.remuneracao = request.form['remuneracao']
+    vaga.beneficios  = request.form['beneficios']
+    vaga.empresa     = request.form['empresa']
+
+    models.db.session.add(vaga)
+    models.db.session.commit()
+    flash('Vaga registrada com sucesso!')
+    return redirect(url_for('listarVagas'))
 
 @app.route('/listarAlunos')    #Abrir Formulário de cadastro de aluno
 def listarAlunos():
@@ -112,6 +126,11 @@ def listarEmpresas():
     empresas = models.Empresa.query.all()
     return render_template('listarEmpresas.html', empresas=empresas)
 
+@app.route('/listarVagas')    #Abrir Formulário de cadastro de aluno
+def listarVagas():
+    vagas = models.Vaga.query.all()   
+    return render_template('listarVagas.html', vagas=vagas)
+
 @app.route('/cadAluno')    #Abrir Formulário de cadastro de aluno
 def cadAluno():
     return render_template('cadAluno.html')
@@ -119,6 +138,11 @@ def cadAluno():
 @app.route('/cadEmpresa')
 def cadEmpresa():
     return render_template('cadEmpresa.html')
+
+@app.route('/cadVaga')
+def cadVaga():
+    empresas = models.Empresa.query.all()
+    return render_template('cadVaga.html', empresas=empresas)
 
 @app.route('/fale_conosco')
 def fale_conosco():

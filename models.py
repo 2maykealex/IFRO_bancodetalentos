@@ -110,6 +110,23 @@ class Empresa(Pessoa):
     def __repr__(self):
         return '<Aluno %r>' % self.nome
 
+class Vaga(db.Model):
+    __tablename__ = "vagas"
+    __table_args__ = {'extend_existing': True} 
+    __mapper_args__ = {'polymorphic_identity': 'vaga'}
+    
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    data_inicio = db.Column(db.String(15))
+    status      = db.Column(db.String(20))    
+    descricao   = db.Column(db.String(100))
+    remuneracao = db.Column(db.String(10))
+    beneficios  = db.Column(db.String(200))
+    data_encerramento = db.Column(db.String(15))
+
+
+    # chaves estrangeiras
+    aluno   = db.Column(db.Integer, db.ForeignKey('pessoas.id'))
+    empresa = db.Column(db.Integer, db.ForeignKey('pessoas.id')) #quem disponibilizou a vaga
 
 
 # class Telefone(db.Model):
