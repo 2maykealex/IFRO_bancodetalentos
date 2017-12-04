@@ -20,7 +20,6 @@ db.create_all()
 # endereco = Endereco('Rua Jacy', '2748', 'apto 01', 'Roque')
 
 aluno = Aluno('22222222222', '12345', 'mayke', 'mayke.suporte@gmail.com','123', 1)
-aluno.apelido = ''
 aluno.endereco = 'rua jacy'
 aluno.num = '2748'
 aluno.complemento = 'apto 1'
@@ -28,14 +27,6 @@ aluno.bairro = 'Roque'
 aluno.cidade = 'Porto Velho'
 aluno.uf = 'RO'
 aluno.telefone = '69 9 9246-1190'
-
-
-
-
-
-
-# aluno.telefones.append(tel1)
-# aluno.enderecos.append(endereco)
 
 
 db.session.add(aluno)
