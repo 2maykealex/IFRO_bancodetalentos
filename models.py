@@ -9,7 +9,6 @@ class Pessoa(db.Model):
     
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     nome        = db.Column(db.String(100))
-    apelido     = db.Column(db.String(100))
     endereco    = db.Column(db.String(50))
     num         = db.Column(db.String(10))
     complemento = db.Column(db.String(40))
@@ -23,9 +22,6 @@ class Pessoa(db.Model):
     email    = db.Column(db.String(15), unique= True)
     password = db.Column(db.String(10))
     tipo     = db.Column(db.Integer)  # 1 para IFRO - 2 para VISITANTE
-
-
-
 
     #endereco = db.relationship("Endereco", uselist=False, back_populates="pessoa")
     #enderecos = db.relationship("Endereco", backref="pessoa-enderecos", lazy='dynamic')
@@ -86,6 +82,7 @@ class Empresa(Pessoa):
 
     # id = db.Column(db.Integer, autoincrement = True, primary_key=True)
     id = db.Column(db.Integer, db.ForeignKey('pessoas.id'), primary_key=True)
+    fantasia  = db.Column(db.String(100))
 
     # id = db.Column(db.Integer, autoincrement = True, primary_key=True)
     cnpj = db.Column(db.String(11))
@@ -99,7 +96,8 @@ class Empresa(Pessoa):
     # enderecos = db.relationship("Endereco", backref="aluno-enderecos", lazy='dynamic')
     # emails    = db.relationship("Email",    backref="aluno-emails",    lazy='dynamic')
 
-    def __init__(self, cnpj, ie, nome, email, password, tipo):
+    def __init__(self, fantasia, cnpj, ie, nome, email, password, tipo):
+        self.fantasia = fantasia
         self.cnpj = cnpj
         self.ie   = ie
 

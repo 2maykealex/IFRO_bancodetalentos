@@ -88,7 +88,7 @@ def post_aluno():
 
 @app.route('/post_empresa', methods=['POST']) #salvar um aluno no banco
 def post_empresa():
-    empresa = models.Empresa(request.form['cnpj'] , request.form['ie'], request.form['nome'], request.form['email'], request.form['senha'], 2)
+    empresa = models.Empresa(request.form['fantasia'], request.form['cnpj'] , request.form['ie'], request.form['nome'], request.form['email'], request.form['senha'], 2)
     empresa.endereco = request.form['endereco']
     empresa.num      = request.form['num']
     empresa.complemento = request.form['complemento']
