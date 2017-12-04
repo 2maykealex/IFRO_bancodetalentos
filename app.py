@@ -59,29 +59,60 @@ def criar_tabelas():
 
 @app.route('/remover_tabelas')
 def remover_tabelas():
- db.drop_all()
- flash('removido com sucesso')
- return redirect(url_for('index'))
+    db.drop_all()
+    flash('removido com sucesso')
+    return redirect(url_for('index'))
 
 @app.route('/post_user', methods=['POST'])
 def post_user():
- user = models.User(request.form['username'], request.form['email'])
- models.db.session.add(user)
- models.db.session.commit()
- flash('Usuario criado com sucesso')
- return redirect(url_for('index'))
+    user = models.User(request.form['username'], request.form['email'])
+    models.db.session.add(user)
+    models.db.session.commit()
+    flash('Usuario criado com sucesso')
+    return redirect(url_for('index'))
 
-
-@app.route('/post_aluno', methods=['POST'])
+@app.route('/post_aluno', methods=['POST']) #salvar um aluno no banco
 def post_aluno():
- aluno = models.Pessoa(request.form['email'], request.form['password'])
- models.db.session.add(aluno)
- models.db.session.commit()
- flash('Aluno registrado com sucesso!')
- return redirect(url_for('index'))
+    aluno = models.Aluno(request.form['cpf'] ,  request.form['matricula'], request.form['nome'], request.form['email'], request.form['senha'], 2)
+    aluno.endereco = request.form['endereco']
+    aluno.num      = request.form['num']
+    aluno.complemento = request.form['complemento']
+    aluno.bairro   = request.form['bairro']
+    aluno.cidade   = request.form['cidade']
+    aluno.uf   = request.form['uf']
+
+    models.db.session.add(aluno)
+    models.db.session.commit()
+    flash('Aluno registrado com sucesso!')
+    return redirect(url_for('listarAlunos'))
+
+@app.route('/post_empresa', methods=['POST']) #salvar um aluno no banco
+def post_empresa():
+    empresa = models.Empresa(request.form['cnpj'] , request.form['ie'], request.form['nome'], request.form['email'], request.form['senha'], 2)
+    empresa.endereco = request.form['endereco']
+    empresa.num      = request.form['num']
+    empresa.complemento = request.form['complemento']
+    empresa.bairro   = request.form['bairro']
+    empresa.cidade   = request.form['cidade']
+    empresa.uf   = request.form['uf']
+
+    models.db.session.add(empresa)
+    models.db.session.commit()
+    flash('Empresa registrada com sucesso!')
+    return redirect(url_for('listarEmpresas'))
 
 
-@app.route('/cadAluno')
+@app.route('/listarAlunos')    #Abrir Formulário de cadastro de aluno
+def listarAlunos():
+    alunos = models.Aluno.query.all()
+    return render_template('listarAlunos.html', alunos=alunos)
+
+@app.route('/listarEmpresas')    #Abrir Formulário de cadastro de aluno
+def listarEmpresas():
+    empresas = models.Empresa.query.all()
+    return render_template('listarEmpresas.html', empresas=empresas)
+
+@app.route('/cadAluno')    #Abrir Formulário de cadastro de aluno
 def cadAluno():
     return render_template('cadAluno.html')
 
@@ -97,11 +128,20 @@ def fale_conosco():
 def saiba_mais():
     return render_template('saiba_mais.html')
 
+@flask_login.login_required
 @app.route('/home_visitante')
 def home_visitante():
     return render_template('home_visit.html')
 
-@app.route('/login', methods=['GET', 'POST'])
+@flask_login.login_required
+@app.route('/home_ifro')
+def home_ifro():
+    return render_template('home_ifro.html')
+
+
+    
+
+@app.route('/login', methods=['GET', 'POST'])         #fazer login
 def login():
     if request.method == 'POST':
         email = request.form['email']
@@ -112,17 +152,20 @@ def login():
             user = User()
             user.id = email
             flask_login.login_user(user)
-            return redirect(url_for('protected'))
+
+            if user_email.tipo == 1:  #acesso IFRO
+                return redirect(url_for('home_ifro'))
+            elif user_email.tipo == 2:  #acesso VISITANTE
+                return redirect(url_for('home_visitante'))
 
         return 'Dados inválidos'
 
     return render_template('login.html') #vejam se é esse o nome do arquivo
 
-
 @app.route('/protected')
 @flask_login.login_required
 def protected():
-    return render_template('home.html') #'Logged in as: ' + flask_login.current_user.id
+    return render_template('/home_ifro.html') #'Logged in as: ' + flask_login.current_user.id
 
 @app.route('/')
 @app.route('/login')

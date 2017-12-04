@@ -1,0 +1,48 @@
+{% extends 'base_ifro.html' %}
+
+{% block titulo %} Index - {% endblock %}
+
+{% block conteudo %}
+
+<br>
+<br>
+
+<div class="container" >
+    <div class="row">
+        <div class="col-md-12" style="background: cadetblue">     <!--  -->
+            <h1>Lista de Emmpresas</h1>
+            <table class="table table-hover">
+                <tr>
+                    <th>Razão Social</th>
+                    <th>Fantasia</th>
+                    <th>CNPJ</th>
+                    <th>IE</th>
+                    <th>Endereço</th>
+                    <th>Num</th>
+                    <th>Complem.</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
+                    <th>UF</th>
+                </tr>
+
+                {% for empresa in empresas: %}
+                <tr>
+                    <td>{{ empresa.nome }}</td>
+                    <td>{{ empresa.apelido }}</td>
+                    <td>{{ empresa.cnpj }}</td>
+                    <td>{{ empresa.ie }}</td>
+                    <td>{{ empresa.endereco }}</td>
+                    <td>{{ empresa.num }}</td>
+                    <td>{{ empresa.complemento }}</td>
+                    <td>{{ empresa.bairro }}</td>
+                    <td>{{ empresa.cidade }}</td>
+                    <td>{{ empresa.uf }}</td>
+
+                </tr>    
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

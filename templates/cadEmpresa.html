@@ -1,10 +1,151 @@
-{% extends 'base.html' %}
+{% extends 'base_ifro.html' %}
 
-{% block titulo %} Index - {% endblock %}
+{% block titulo %} Cadastro de Aluno - {% endblock %}
 
 {% block conteudo %}
+
     <!-- ADD O CONTEUDO  -->
-    
-    <!-- rota: /cadEmpresa  -->
+
+    <!-- usar rota: /cadAluno  -->
+
+
+    <br><br>
+
+
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12" style="background: gray">
+                <br>
+                <div class="row">
+                    <div class="col-md-3">
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="container">
+
+                            <form class="form-horizontal"  method="post" action="/post_empresa">
+                                    <fieldset>
+                                
+                                    <!-- Form Name -->
+                                    <legend>Cadastro de Empresa</legend>
+                                
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="nome">Razão Social</label>  
+                                        <div class="col-md-12">
+                                            <input id="nome" name="nome" type="text" placeholder="Digite a Razão Social" class="form-control input-md" required>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <!-- <div class="form-group">
+                                        <label class="col-md-4 control-label" for="nome">Nome Fantasia</label>  
+                                        <div class="col-md-12">
+                                            <input id="apelido" name="apelido" type="text" placeholder="Digite o Nome Fantasia" class="form-control input-md" required>
+                                            
+                                        </div>
+                                    </div> -->
+                                    
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="cpf">CNPJ</label>  
+                                        <div class="col-md-12">
+                                            <input id="cnpj" name="cnpj" type="text" placeholder="Digite o cnpj" class="form-control input-md" required>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="cpf">IE</label>  
+                                        <div class="col-md-12">
+                                            <input id="ie" name="ie" type="text" placeholder="Digite a IE" class="form-control input-md" required>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="endereco">Endereco</label>  
+                                        <div class="col-md-12">
+                                            <input id="endereco" name="endereco" type="text" placeholder="Digite seu endereco" class="form-control input-md" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="num">Numero</label>  
+                                        <div class="col-md-6">
+                                            <input id="num" name="num" type="text" placeholder="Digite o Nº ou S/N" class="form-control input-md" required>
+                                        </div>
+                                    </div>
+                                
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="complemento">Complemento</label>  
+                                        <div class="col-md-12">
+                                            <input id="complemento" name="complemento" type="text" placeholder="Complemento" class="form-control input-md">
+                                        </div>
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="complemento">Bairro</label>  
+                                        <div class="col-md-12">
+                                            <input id="bairro" name="bairro" type="text" placeholder="Bairro" class="form-control input-md" required>
+                                        </div>
+                                    </div>
+                                
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="complemento">Cidade</label>  
+                                        <div class="col-md-12">
+                                            <input id="cidade" name="cidade" type="text" placeholder="Cidade" class="form-control input-md" required>
+                                        </div>
+                                    </div>
+                                                                
+                                    <!-- Select Basic -->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="uf">UF</label>
+                                        <div class="col-md-4">
+                                            <select id="uf" name="uf" class="form-control" required>
+                                            <option value="1">RO</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="email">Email</label>  
+                                        <div class="col-md-12">
+                                            <input id="email" name="email" type="email" placeholder="Digite seu email" class="form-control input-md" required> 
+                                        </div>
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="senha">Senha</label>  
+                                        <div class="col-md-12">
+                                            <input id="senha" name="senha" type="password" placeholder="Digite sua senha" class="form-control input-md" required> 
+                                        </div>
+                                    </div>
+                                
+                                    </fieldset>
+
+                                    <br>
+                                    <button class="btn btn-lg btn-success btn-block" type="submit">Cadastrar</button>
+                                    <br>
+                            </form>
+
+
+
+                        </div> <!-- /container -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 {% endblock %}

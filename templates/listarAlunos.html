@@ -1,0 +1,46 @@
+{% extends 'base_ifro.html' %}
+
+{% block titulo %} Index - {% endblock %}
+
+{% block conteudo %}
+
+<br>
+<br>
+
+<div class="container" >
+    <div class="row">
+        <div class="col-md-12" style="background: cadetblue">     <!--  -->
+            <h1>Lista de Alunos</h1>
+            <table class="table table-hover">
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Matrícula</th>
+                    <th>Endereço</th>
+                    <th>Num</th>
+                    <th>Complem.</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
+                    <th>UF</th>
+                </tr>
+
+                {% for aluno in alunos: %}
+                <tr>
+                    <td>{{ aluno.nome }}</td>
+                    <td>{{ aluno.cpf }}</td>
+                    <td>{{ aluno.matricula }}</td>
+                    <td>{{ aluno.endereco }}</td>
+                    <td>{{ aluno.num }}</td>
+                    <td>{{ aluno.complemento }}</td>
+                    <td>{{ aluno.bairro }}</td>
+                    <td>{{ aluno.cidade }}</td>
+                    <td>{{ aluno.uf }}</td>
+
+                </tr>    
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
