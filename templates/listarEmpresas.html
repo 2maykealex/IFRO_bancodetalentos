@@ -7,7 +7,7 @@
 <br>
 <br>
 
-<div class="container" >
+<div class="container col-md-10" >
     <div class="row">
         <div class="col-md-12" style="background: cadetblue">     <!--  -->
             <h1>Lista de Empresas</h1>
@@ -27,16 +27,16 @@
 
                 {% for empresa in empresas: %}
                 <tr>
-                    <td>{{ empresa.nome }}</td>
-                    <td>{{ empresa.apelido }}</td>
+                    <td>{{ empresa.nome.upper() }}</td>
+                    <td>{{ empresa.fantasia.upper() }}</td>
                     <td>{{ empresa.cnpj }}</td>
                     <td>{{ empresa.ie }}</td>
-                    <td>{{ empresa.endereco }}</td>
+                    <td>{{ empresa.endereco.upper() }}</td>
                     <td>{{ empresa.num }}</td>
-                    <td>{{ empresa.complemento }}</td>
-                    <td>{{ empresa.bairro }}</td>
-                    <td>{{ empresa.cidade }}</td>
-                    <td>{{ empresa.uf }}</td>
+                    <td>{{ empresa.complemento.upper() }}</td>
+                    <td>{{ empresa.bairro.upper() }}</td>
+                    <td>{{ empresa.cidade.upper() }}</td>
+                    <td>{{ empresa.uf.upper() }}</td>
 
                 </tr>    
                 {% endfor %}

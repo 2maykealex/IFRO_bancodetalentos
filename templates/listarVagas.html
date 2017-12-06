@@ -7,7 +7,7 @@
 <br>
 <br>
 
-<div class="container" >
+<div class="container col-md-10">
     <div class="row">
         <div class="col-md-12" style="background: cadetblue">     <!--  -->
             <h1>Lista de Vagas</h1>
@@ -24,10 +24,10 @@
 
                 <tr>
                     <td>{{ vaga.data_inicio }}</td>
-                    <td>{{ vaga.status }}</td>
-                    <td>{{ vaga.nome }}</td>
-                    <td>{{ vaga.descricao }}</td>
-                    <td>{{ vaga.remuneracao }}</td>
+                    <td>{{ vaga.status.upper() }}</td>
+                    <td>{{ vaga.nome.upper() }}</td>
+                    <td>{{ vaga.descricao.upper() }}</td>
+                    <td>{{ vaga.remuneracao.upper() }}</td>
                 </tr>    
                 {% endfor %}
             </table>
