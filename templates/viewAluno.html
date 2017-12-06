@@ -1,0 +1,29 @@
+{% extends 'base_ifro.html' %}
+
+{% block titulo %} Index - {% endblock %}
+
+{% block conteudo %}
+
+<br>
+<br>
+
+<div class="container col-md-10" >
+    <div class="row">
+        <div class="col-md-12" style="background: cadetblue">     <!--  -->
+            <h1>Perfil do Aluno</h1>
+            <label for="exampleInputEmail1">{{ aluno.nome}}</label>
+            <label for="exampleInputEmail1">{{ aluno.cpf}}</label>
+            <label for="exampleInputEmail1">{{ aluno.matricula}}</label>
+            <label for="exampleInputEmail1">{{ aluno.endereco}}</label>
+            <label for="exampleInputEmail1">{{ aluno.num}}</label>
+            <label for="exampleInputEmail1">{{ aluno.complemento}}</label>
+            <label for="exampleInputEmail1">{{ aluno.bairro}}</label>
+            <label for="exampleInputEmail1">{{ aluno.cidade}}</label>
+            <label for="exampleInputEmail1">{{ aluno.uf}}</label>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
