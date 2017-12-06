@@ -7,34 +7,47 @@
 <br>
 <br>
 
-<div class="container" >
+<div class="container col-md-10" >
     <div class="row">
         <div class="col-md-12" style="background: cadetblue">     <!--  -->
             <h1>Lista de Alunos</h1>
             <table class="table table-hover">
                 <tr>
-                    <th>Nome</th>
-                    <th>CPF</th>
                     <th>Matrícula</th>
+                    <th>Nome</th>
+                    <th>CPF</th>                    
+                    <th>Telefone</th>
                     <th>Endereço</th>
                     <th>Num</th>
-                    <th>Complem.</th>
                     <th>Bairro</th>
                     <th>Cidade</th>
                     <th>UF</th>
+                    <th></th>
                 </tr>
 
                 {% for aluno in alunos: %}
                 <tr>
-                    <td>{{ aluno.nome }}</td>
-                    <td>{{ aluno.cpf }}</td>
                     <td>{{ aluno.matricula }}</td>
-                    <td>{{ aluno.endereco }}</td>
-                    <td>{{ aluno.num }}</td>
-                    <td>{{ aluno.complemento }}</td>
-                    <td>{{ aluno.bairro }}</td>
-                    <td>{{ aluno.cidade }}</td>
-                    <td>{{ aluno.uf }}</td>
+                    <td>{{ aluno.nome.upper() }}</td>
+                    <td>{{ aluno.cpf }}</td>                    
+                    <td>{{ aluno.telefone }}</td>
+                    <td>{{ aluno.endereco.upper() }}</td>
+                    <td>{{ aluno.num.upper() }}</td>
+                    <td>{{ aluno.bairro.upper() }}</td>
+                    <td>{{ aluno.cidade.upper() }}</td>
+                    <td>{{ aluno.uf.upper() }}</td>
+
+                    <td>
+                        <a href="/viewAluno/{{aluno.id}}" class="btn btn-primary">
+                                Visualizar
+                        </a>
+
+                        <a href="" class="btn btn-warning">
+                                Editar
+                        </a>
+                        
+                    
+                    </td>
 
                 </tr>    
                 {% endfor %}

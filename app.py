@@ -73,7 +73,7 @@ def post_user():
 
 @app.route('/post_aluno', methods=['POST']) #salvar um aluno no banco
 def post_aluno():
-    aluno = models.Aluno(request.form['cpf'] ,  request.form['matricula'], request.form['nome'], request.form['email'], request.form['senha'], 2)
+    aluno = models.Aluno(request.form['cpf'] ,  request.form['matricula'].upper(), request.form['nome'].upper(), request.form['email'], request.form['senha'], 2)
     aluno.endereco = request.form['endereco']
     aluno.num      = request.form['num']
     aluno.complemento = request.form['complemento']
@@ -88,13 +88,13 @@ def post_aluno():
 
 @app.route('/post_empresa', methods=['POST']) #salvar um aluno no banco
 def post_empresa():
-    empresa = models.Empresa(request.form['fantasia'], request.form['cnpj'] , request.form['ie'], request.form['nome'], request.form['email'], request.form['senha'], 2)
-    empresa.endereco = request.form['endereco']
-    empresa.num      = request.form['num']
-    empresa.complemento = request.form['complemento']
-    empresa.bairro   = request.form['bairro']
-    empresa.cidade   = request.form['cidade']
-    empresa.uf   = request.form['uf']
+    empresa = models.Empresa(request.form['fantasia'].upper(), request.form['cnpj'], request.form['ie'], request.form['nome'].upper(), request.form['email'].upper(), request.form['senha'].upper(), 2)
+    empresa.endereco = request.form['endereco'].upper()
+    empresa.num      = request.form['num'].upper()
+    empresa.complemento = request.form['complemento'].upper()
+    empresa.bairro   = request.form['bairro'].upper()
+    empresa.cidade   = request.form['cidade'].upper()
+    empresa.uf   = request.form['uf'].upper()
 
     models.db.session.add(empresa)
     models.db.session.commit()
@@ -104,24 +104,29 @@ def post_empresa():
 @app.route('/post_vaga', methods=['POST']) #salvar um aluno no banco
 def post_vaga():
     vaga = models.Vaga()
-    vaga.data_inicio = '04/12/2014'
-    vaga.status      = 'ABERTA'
-    vaga.descricao   = request.form['descricao']
-    vaga.remuneracao = request.form['remuneracao']
-    vaga.beneficios  = request.form['beneficios']
-    vaga.empresa     = request.form['empresa']
+    vaga.data_inicio = '04/12/2014'.upper()
+    vaga.status      = 'ABERTA'.upper()
+    vaga.descricao   = request.form['descricao'].upper()
+    vaga.remuneracao = request.form['remuneracao'].upper()
+    vaga.beneficios  = request.form['beneficios'].upper()
+    vaga.empresa     = request.form['empresa'].upper()
 
     models.db.session.add(vaga)
     models.db.session.commit()
     flash('Vaga registrada com sucesso!')
     return redirect(url_for('listarVagas'))
 
-@app.route('/listarAlunos')    #Abrir Formulário de cadastro de aluno
+@app.route('/listarAlunos')    
 def listarAlunos():
     alunos = models.Aluno.query.all()
     return render_template('listarAlunos.html', alunos=alunos)
 
-@app.route('/listarEmpresas')    #Abrir Formulário de cadastro de aluno
+@app.route('/viewAluno/<idAluno>/')   
+def viewAluno(idAluno):
+    aluno = models.Aluno.query.filter_by(id=idAluno).first()
+    return render_template('viewAluno.html', aluno=aluno)
+
+@app.route('/listarEmpresas')   
 def listarEmpresas():
     empresas = models.Empresa.query.all()
     return render_template('listarEmpresas.html', empresas=empresas)
@@ -141,7 +146,7 @@ def listarVagas():
     #Vaga.query.join(models.Empresa).filter(models.Empresa.id == models.Vaga.empresa).all()
 
     vagas  = models.Vaga.query.select_from(models.Empresa).add_columns(models.Empresa.nome, models.Vaga.data_inicio, models.Vaga.status, models.Vaga.descricao, models.Vaga.remuneracao, models.Vaga.beneficios
-).all()
+).filter(models.Empresa.id == models.Vaga.empresa).order_by(models.Vaga.data_inicio).all()
 
     #vagasEmpresas = models.Vaga.query.join(empresas, empresas.id == vagas.id)
     #vagas = models.Vaga.query.all()
