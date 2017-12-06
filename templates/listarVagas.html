@@ -15,14 +15,17 @@
                 <tr>
                     <th>Data</th>
                     <th>Status</th>
+                    <th>Empresa</th>
                     <th>Descricao</th>
                     <th>Remuneração</th>
                 </tr>
 
-                {% for vaga in vagas: %}
+                {% for vaga in vagas %}
+
                 <tr>
                     <td>{{ vaga.data_inicio }}</td>
                     <td>{{ vaga.status }}</td>
+                    <td>{{ vaga.nome }}</td>
                     <td>{{ vaga.descricao }}</td>
                     <td>{{ vaga.remuneracao }}</td>
                 </tr>    

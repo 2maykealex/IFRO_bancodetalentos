@@ -125,9 +125,12 @@ class Vaga(db.Model):
 
 
     # chaves estrangeiras
-    aluno   = db.Column(db.Integer, db.ForeignKey('pessoas.id'))
+    #aluno   = db.Column(db.Integer, db.ForeignKey('pessoas.id'))
     empresa = db.Column(db.Integer, db.ForeignKey('pessoas.id')) #quem disponibilizou a vaga
 
+
+    def __repr__(self):
+        return '<Vaga %r %r %r %r %r>' % (self.data_inicio, self.empresa, self.descricao, self.remuneracao, self.beneficios)
 
 # class Telefone(db.Model):
 #     __tablename__ = "telefones"
