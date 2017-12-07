@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<head>
+ <meta charset="UTF-8">
+    <link href="../../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ 
+     <!-- Custom Fonts -->
+     <link href="../../static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+ 
+     <!-- Custom CSS -->
+     <link href="../../static/css/stylish-portfolio.css" rel="stylesheet">
+     <link href="../../static/css/signin.css" rel="stylesheet">
+ 
+     <link rel="icon" type="image/png" href="/static/img/favicon.ico">
+
+ <title>
+ {% block titulo %}  
+    PROJETO INTEGRADOR
+ {% endblock %}
+ </title>
+</head>
+<body>
+
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">   
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Cadastros</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="/cadAluno">Cadastro de Aluno</a>
+                            <a class="dropdown-item" href="/cadEmpresa">Cadastro de Empresas</a>
+                            <a class="dropdown-item" href="/cadVaga">Cadastro de Vagas</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Relatórios</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown02">
+                            <a class="dropdown-item" href="/listarAlunos">Lista de Aluno</a>
+                            <a class="dropdown-item" href="/listarEmpresas">Lista de Empresas</a>
+                            <a class="dropdown-item" href="/listarVagas">Lista de Vagas</a>
+                            
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    
+            </nav>
+
+ {% block conteudo %} 
+    
+ 
+    
+ 
+ {% endblock %}
+ 
+ {% block rodape %}
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+            <div class="col-lg-10 mx-auto text-center">
+                <h4>
+                    <strong>Instituto Federal de Educação, Ciência e Tecnologia de Rondônia</strong>
+                </h4>
+                <h3> 
+                    <a href="http://www.ifro.edu.br">http://www.ifro.edu.br</a>  
+                </h3>
+                <br>
+                <br>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/ifrondonia/" target="_blank">
+                        <i class="fa fa-facebook fa-fw fa-3x"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/ifrondonia" target="_blank">
+                        <i class="fa fa-twitter fa-fw fa-3x"></i>
+                        </a>
+                    </li>                
+                </ul>
+                <hr class="small">
+                <p class="text-muted">Copyright &copy; Banco de Talentos IFRO</p>
+            </div>
+            </div>
+        </div>
+        <a id="to-top" href="#top" class="btn btn-dark btn-lg js-scroll-trigger">
+            <i class="fa fa-chevron-up fa-fw fa-1x"></i>
+        </a>
+    </footer>
+    
+    <!-- Bootstrap core JavaScript -->
+    <script src="../../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="../../static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../../static/vendor/js/stylish-portfolio.js"></script> 
+ 
+ {% endblock %}
+</body>
+</html>
