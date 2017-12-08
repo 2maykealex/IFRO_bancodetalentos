@@ -15,6 +15,7 @@ class Pessoa(db.Model):
     bairro      = db.Column(db.String(50))
     cidade      = db.Column(db.String(50))
     uf          = db.Column(db.String(50))
+    imagem      = db.Column(db.String(80))
 
     telefone    = db.Column(db.String(15))
     
