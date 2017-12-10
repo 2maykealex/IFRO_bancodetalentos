@@ -14,11 +14,7 @@
             <h4 class="modal-title" id="myModalLabel">Perfil do Aluno</h4>
             </div>
         <div class="modal-body">
-            <center>
-                <!-- <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" border="0" class="img-circle"></a> -->
-                
-                
-
+            <center>            
                 <img src="../../static/img/pessoasImg/{{aluno.imagem}}.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
                 <h3 class="media-heading">{{ aluno.nome}}</h3>
                 <h5 class="media-heading">CPF: {{ aluno.cpf}}</h5>
@@ -43,31 +39,8 @@
         <div class="modal-footer">
             <center>
             <button type="button" class="btn btn-default" data-dismiss="modal">I've heard enough about Joe</button>
+            <a href="/listarAlunos" class="btn btn-warning">Voltar</a>
             </center>
-        </div>
-    </div>
-</div>
-
-<div class="container col-md-10" >
-    <div class="row">
-        <div class="col-md-12" style="background: cadetblue">     <!--  -->
-            <h1>Perfil do Aluno</h1>
-            <label for="exampleInputEmail1">{{ aluno.nome}}</label>
-            <label for="exampleInputEmail1">{{ aluno.cpf}}</label>
-            <label for="exampleInputEmail1">{{ aluno.matricula}}</label>
-            <label for="exampleInputEmail1">{{ aluno.endereco}}</label>
-            <label for="exampleInputEmail1">{{ aluno.num}}</label>
-            <label for="exampleInputEmail1">{{ aluno.complemento}}</label>
-            <label for="exampleInputEmail1">{{ aluno.bairro}}</label>
-            <label for="exampleInputEmail1">{{ aluno.cidade}}</label>
-            <label for="exampleInputEmail1">{{ aluno.uf}}</label>
-
-
-
-           
-                
-            
-
         </div>
     </div>
 </div>
