@@ -218,9 +218,8 @@ def protected():
     return render_template('/home_ifro.html') #'Logged in as: ' + flask_login.current_user.id
 
 @app.route('/')
-@app.route('/login')
 def index():
-    return render_template('index.html')
+    return render_template('home_ifro.html')  #mudar depois para    index.html
 
 @login_manager.unauthorized_handler
 def unauthorized_handler():
