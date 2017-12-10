@@ -23,6 +23,7 @@
                     <th>Bairro</th>
                     <th>Cidade</th>
                     <th>UF</th>
+                    <th>Ações</th>
                 </tr>
 
                 {% for empresa in empresas: %}
@@ -37,6 +38,18 @@
                     <td>{{ empresa.bairro.upper() }}</td>
                     <td>{{ empresa.cidade.upper() }}</td>
                     <td>{{ empresa.uf.upper() }}</td>
+
+                    <td>
+                        <a href="/viewEmpresa/{{empresa.id}}" class="btn btn-primary">
+                                Visualizar
+                        </a>
+
+                        <a href="" class="btn btn-warning">
+                                Editar
+                        </a>
+                        
+                    
+                    </td>
 
                 </tr>    
                 {% endfor %}

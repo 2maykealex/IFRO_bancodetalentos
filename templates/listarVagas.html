@@ -18,6 +18,7 @@
                     <th>Empresa</th>
                     <th>Descricao</th>
                     <th>Remuneração</th>
+                    <th>Ações</th>
                 </tr>
 
                 {% for vaga in vagas %}
@@ -28,6 +29,18 @@
                     <td>{{ vaga.nome.upper() }}</td>
                     <td>{{ vaga.descricao.upper() }}</td>
                     <td>{{ vaga.remuneracao.upper() }}</td>
+
+                    <td>
+                        <a href="/viewVaga/{{vaga.id}}" class="btn btn-primary">
+                                Visualizar
+                        </a>
+
+                        <a href="" class="btn btn-warning">
+                                Editar
+                        </a>
+                        
+                    
+                    </td>
                 </tr>    
                 {% endfor %}
             </table>
