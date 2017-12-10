@@ -131,30 +131,16 @@ def listarEmpresas():
     empresas = models.Empresa.query.all()
     return render_template('listarEmpresas.html', empresas=empresas)
 
-@app.route('/listarEmpresa/<id>')
-def listarEmpresa(idEmp):
-    empresa = models.Empresa.query.filter_by(id==idEmp).first()
-    return empresa
+@app.route('/viewEmpresa/<idEmp>/')
+def viewEmpresa(idEmp):
+    empresa = models.Empresa.query.filter_by(id=idEmp).first()
+    return  render_template('viewEmpresa.html', empresa=empresa)
 
 @app.route('/listarVagas')    #Abrir Formulário de cadastro de aluno
 def listarVagas():
-    #empresas = models.Empresa.query.all()
-    #vagas    = models.Vaga.query.all()
-
-    #vagas = models.Vaga.query.join(models.Empresa).filter(models.Empresa.id == models.Vaga.empresa).all()
-
-    #Vaga.query.join(models.Empresa).filter(models.Empresa.id == models.Vaga.empresa).all()
-
     vagas  = models.Vaga.query.select_from(models.Empresa).add_columns(models.Empresa.nome, models.Vaga.data_inicio, models.Vaga.status, models.Vaga.descricao, models.Vaga.remuneracao, models.Vaga.beneficios
 ).filter(models.Empresa.id == models.Vaga.empresa).order_by(models.Vaga.data_inicio).all()
 
-    #vagasEmpresas = models.Vaga.query.join(empresas, empresas.id == vagas.id)
-    #vagas = models.Vaga.query.all()
-
-    #print(vagas.empresa.nome)
-
-
-    #return 'ok'
     return render_template('listarVagas.html', vagas=vagas)
 
 @app.route('/cadAluno')    #Abrir Formulário de cadastro de aluno
