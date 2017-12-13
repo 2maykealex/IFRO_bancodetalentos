@@ -134,7 +134,12 @@ def listarEmpresas():
 @app.route('/viewEmpresa/<idEmp>/')
 def viewEmpresa(idEmp):
     empresa = models.Empresa.query.filter_by(id=idEmp).first()
-    return  render_template('viewEmpresa.html', empresa=empresa)
+
+    vagasEmpresa = models.Vaga.query.select_from(models.Empresa).add_columns(models.Vaga.id,models.Empresa.nome, models.Vaga.data_inicio, models.Vaga.status, models.Vaga.descricao, models.Vaga.remuneracao, models.Vaga.beneficios
+).filter(models.Empresa.id == models.Vaga.empresa).order_by(models.Vaga.data_inicio).all()
+ 
+
+    return  render_template('viewEmpresa.html', empresa=empresa, vagas=vagasEmpresa)
 
 @app.route('/listarVagas')    #Abrir Formulário de cadastro de aluno
 def listarVagas():
