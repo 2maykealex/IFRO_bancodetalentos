@@ -5,49 +5,58 @@
 {% block conteudo %}
 
 <br>
-<br>
-
-
-
-
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title" id="myModalLabel">Perfil do Aluno</h4>
-            </div>
-        <div class="modal-body">
-            <center>            
-                <img src="../../static/img/pessoasImg/{{aluno.imagem}}.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
-                <h3 class="media-heading">{{ aluno.nome}}</h3>
-                <h5 class="media-heading">CPF: {{ aluno.cpf}}</h5>
-                <h5 class="media-heading">MATRIÍCULA:{{ aluno.matricula}}</h5>
-                <hr>
-                <span><strong>Endereço: {{ aluno.endereco}}</strong></span>
-                <span><strong>{{ aluno.num}}, </strong></span>
-                <span><strong>{{ aluno.complemento}}, </strong></span>
-                <span><strong>{{ aluno.bairro}}, </strong></span>
-                <span><strong>{{ aluno.cidade}}-</strong></span>
-                <span><strong>{{ aluno.uf}}</strong></span>
-                <hr>
-                
-            </center>
-            <hr>
-            <center>
-            <p class="text-left"><strong>Bio: </strong><br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
+<br> 
+<div class="container col-md-10" >
+    <div class="modal-header" style="background: cadetblue"> 
+    
+        <div class="col-md-10">
+            <h1 class="modal-title">Perfil do Aluno</h1>
             <br>
-            </center>
+            <div class="row">
+                
+                <div class="col-md-2">
+                    <h3>Nome: </h3>
+                    <h3>Matrícula: </h3>
+                    <h3>CPF: </h3>
+                </div>
+
+                <div class="col-md-10">
+                    <h3 class="media-heading">{{ aluno.nome}}</h3>
+                    <h3 class="media-heading">{{ aluno.matricula}}</h3>
+                    <h3 class="media-heading">{{ aluno.cpf}}</h3>
+                </div>
+            </div>
+            <hr>
+            
+            <div class="row">
+                <div class="col-md-2">
+                    <h3>Endereço: </h3>
+                    <h3>Número: </h3>
+                    <h3>complemento: </h3>
+                    <h3>Bairro: </h3>
+                    <h3>Cidade: </h3>
+                    <h3>Estado: </h3>
+                </div>
+                
+                <div class="col-md-10">
+                    <h3 class="media-heading">{{ aluno.endereco}}</h3>
+                    <h3 class="media-heading">{{ aluno.num}}</h3>
+                    <h3 class="media-heading">{{ aluno.complemento}}</h3>
+                    <h3 class="media-heading">{{ aluno.bairro}}</h3>
+                    <h3 class="media-heading">{{ aluno.cidade}}</h3>
+                    <h3 class="media-heading">{{ aluno.uf}}</h3>
+                </div>
+            </div>
         </div>
-        <div class="modal-footer">
-            <center>
-            <button type="button" class="btn btn-default" data-dismiss="modal">I've heard enough about Joe</button>
+
+        <div class="col-md-2">
+            <img src="../../static/img/pessoasImg/{{aluno.imagem}}.jpg" name="aboutme" width="200" height="200" border="0" class="img-circle">
             <a href="/listarAlunos" class="btn btn-warning">Voltar</a>
-            </center>
+            <hr>
         </div>
     </div>
-    
 </div>
+        
 
 
 {% endblock %}
