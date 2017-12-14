@@ -7,19 +7,30 @@
 <br>
 <br> 
 <div class="container col-md-11" >
+
+    <div class="row">            
+        <div class="modal-header col-md-12" style="background: cadetblue"> 
+            <div class="col-md-12">
+                <h1 class="modal-title text-center">Perfil do Aluno</h1>
+            </div>
+        </div>
+        
+    </div>
+    
+    <br>
+
     <div class="row">
 
-        <div class="modal-header col-md-10" style="background: rgb(56, 133, 197)"> 
+        <div class="modal-header col-md-10" style="background: cadetblue"> 
         
             <div class="col-md-12">
-                <h1 class="modal-title">Perfil do Aluno</h1>
-                <hr>
+                
                 <div class="row">
                     
                     <div class="col-md-2">
-                        <h3>Nome: </h3>
-                        <h3>Matrícula: </h3>
-                        <h3>CPF: </h3>
+                        <h3><strong>Nome:</strong> </h3>
+                        <h3><strong>Matrícula:</strong></h3>
+                        <h3><strong>CPF:</strong></h3>
                     </div>
 
                     <div class="col-md-10">
@@ -33,12 +44,12 @@
                 
                 <div class="row">
                     <div class="col-md-2">
-                        <h3>Endereço: </h3>
-                        <h3>Número: </h3>
-                        <h3>complemento: </h3>
-                        <h3>Bairro: </h3>
-                        <h3>Cidade: </h3>
-                        <h3>Estado: </h3>
+                        <h3><strong>Endereço: </strong></h3>
+                        <h3><strong>Número: </strong></h3>
+                        <h3><strong>Complemento: </strong></h3>
+                        <h3><strong>Bairro: </strong></h3>
+                        <h3><strong>Cidade: </strong></h3>
+                        <h3><strong>Estado: </strong></h3>
                     </div>
                     
                     <div class="col-md-10">
@@ -50,22 +61,20 @@
                         <h3 class="media-heading">{{ aluno.uf.upper()}}</h3>
                     </div>
                 </div>
-            </div>  
-            
-        
-
+            </div>          
         </div>
 
-
         <div class="col-md-2">
-            <div class="modal-header " style="background: rgb(56, 133, 197)">
+            <div class="modal-header " style="background: cadetblue">
                 <img src="../../static/img/pessoasImg/{{aluno.imagem}}.jpg" name="aboutme" width="200" height="200" border="0" class="img-circle">
             </div>
             
             <a href="/listarAlunos" class="btn btn-warning">Voltar</a>
 
             <a href="/editarAluno/{{aluno.id}}/" class="btn btn-primary">Editar</a>
-            </p>
+
+            <a href="/inativarAluno/{{aluno.id}}/" class="btn btn-danger">Inativar</a>
+            
         </div>
     </div>
 

@@ -4,66 +4,90 @@
 
 {% block conteudo %}
 
+
+
 <br>
 <br> 
-<div class="container col-md-10" >
-    <div class="modal-header" style="background: cadetblue"> 
+<div class="container col-md-11" >
+
+    <div class="row">            
+        <div class="modal-header col-md-12" style="background: cadetblue"> 
+            <div class="col-md-12">
+                <h1 class="modal-title text-center">Perfil da Empresa</h1>
+            </div>
+        </div>
+        
+    </div>
     
-        <div class="col-md-10">
-            <h1 class="modal-title">Perfil da Empresa</h1>
-            <hr>
-            
-            <div class="row">
-                
-                <div class="col-md-2">
-                    <h3>Razão Social: </h3>
-                    <h3>Fantasia: </h3>
-                    <h3>CNPJ: </h3>
-                </div>
+    <br>
 
-                <div class="col-md-10">
-                    <h3 class="media-heading">{{ empresa.nome}}</h3>
-                    <h3 class="media-heading">{{ empresa.fantasia}}</h3>
-                    <h3 class="media-heading">{{ empresa.cnpj[0:2]}}.{{empresa.cnpj[2:5]}}.{{empresa.cnpj[5:8]}}/{{empresa.cnpj[8:12]}}-{{empresa.cnpj[12:14]}}</h3>
+    <div class="row">
+
+        <div class="modal-header col-md-10" style="background: cadetblue"> 
+        
+            <div class="col-md-12">
+                
+                <div class="row">
                     
+                    <div class="col-md-2">
+                        <h3><strong>Nome:</strong> </h3>
+                        <h3><strong>Fantasia:</strong></h3>
+                        <h3><strong>CNPJ:</strong></h3>
+                    </div>
+
+                    <div class="col-md-10">
+                        <h3 class="media-heading">{{ empresa.nome.upper()}}</h3>
+                        <h3 class="media-heading">{{ empresa.fantasia}}</h3>
+                        <h3 class="media-heading">{{ empresa.cnpj[0:2]}}.{{empresa.cnpj[2:5]}}.{{empresa.cnpj[5:8]}}/{{empresa.cnpj[8:12]}}-{{empresa.cnpj[12:14]}}</h3>
+                    
+                    </div>
                 </div>
-            </div>
-            <hr>
-            
-            <div class="row">
-                <div class="col-md-2">
-                    <h3>Endereço: </h3>
-                    <h3>Número: </h3>
-                    <h3>complemento: </h3>
-                    <h3>Bairro: </h3>
-                    <h3>Cidade: </h3>
-                    <h3>Estado: </h3>
-                </div>
+                <hr>
                 
-                <div class="col-md-10">
-                    <h3 class="media-heading">{{ empresa.endereco}}</h3>
-                    <h3 class="media-heading">{{ empresa.num}}</h3>
-                    <h3 class="media-heading">{{ empresa.complemento}}</h3>
-                    <h3 class="media-heading">{{ empresa.bairro}}</h3>
-                    <h3 class="media-heading">{{ empresa.cidade}}</h3>
-                    <h3 class="media-heading">{{ empresa.uf}}</h3>
+                <div class="row">
+                    <div class="col-md-2">
+                        <h3><strong>Endereço: </strong></h3>
+                        <h3><strong>Número: </strong></h3>
+                        <h3><strong>Complemento: </strong></h3>
+                        <h3><strong>Bairro: </strong></h3>
+                        <h3><strong>Cidade: </strong></h3>
+                        <h3><strong>Estado: </strong></h3>
+                    </div>
+                    
+                    <div class="col-md-10">
+                        <h3 class="media-heading">{{ empresa.endereco}}</h3>
+                        <h3 class="media-heading">{{ empresa.num}}</h3>
+                        <h3 class="media-heading">{{ empresa.complemento}}</h3>
+                        <h3 class="media-heading">{{ empresa.bairro}}</h3>
+                        <h3 class="media-heading">{{ empresa.cidade}}</h3>
+                        <h3 class="media-heading">{{ empresa.uf}}</h3>
+                    </div>
                 </div>
-
-            </div>
-
+            </div>          
         </div>
 
         <div class="col-md-2">
-            <img src="../../static/img/pessoasImg/{{empresa.imagem}}.jpg" name="aboutme" width="200" height="200" border="0" class="img-circle">
-            <hr>
+            <div class="modal-header " style="background:cadetblue">
+                <img src="../../static/img/pessoasImg/{{empresa.imagem}}.jpg" name="aboutme" width="200" height="200" border="0" class="img-circle">
+            </div>
+            
             <a href="/listarEmpresas" class="btn btn-warning">Voltar</a>
+
+            <a href="/editarEmpresa/{{empresa.id}}/" class="btn btn-primary">Editar</a>
+
+            <a href="/inativarEmpresa/{{empresa.id}}/" class="btn btn-danger">Inativar</a>
+            
         </div>
     </div>
+
 </div>
+
+
+
 
 <br>
 <br> 
-<div class="container col-md-10" >
+<div class="container col-md-11" >
     <div class="modal-header" style="background: cadetblue"> 
         <div class="col-md-12">
             <h1 class="modal-title">Suas Oportunidades</h1>
