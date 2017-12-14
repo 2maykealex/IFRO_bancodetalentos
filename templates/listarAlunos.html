@@ -29,7 +29,7 @@
                 <tr>
                     <td>{{ aluno.matricula }}</td>
                     <td>{{ aluno.nome.upper() }}</td>
-                    <td>{{ aluno.cpf }}</td>                    
+                    <td>{{ aluno.cpf[0:3]}}.{{aluno.cpf[3:6]}}.{{aluno.cpf[6:9]}}-{{aluno.cpf[9:11]}}</td>                    
                     <td>{{ aluno.telefone }}</td>
                     <td>{{ aluno.endereco.upper() }}</td>
                     <td>{{ aluno.num.upper() }}</td>

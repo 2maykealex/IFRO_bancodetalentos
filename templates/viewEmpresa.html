@@ -24,7 +24,7 @@
                 <div class="col-md-10">
                     <h3 class="media-heading">{{ empresa.nome}}</h3>
                     <h3 class="media-heading">{{ empresa.fantasia}}</h3>
-                    <h3 class="media-heading">{{ empresa.cnpj}}</h3>
+                    <h3 class="media-heading">{{ empresa.cnpj[0:2]}}.{{empresa.cnpj[2:5]}}.{{empresa.cnpj[5:8]}}/{{empresa.cnpj[8:12]}}-{{empresa.cnpj[12:14]}}</h3>
                     
                 </div>
             </div>

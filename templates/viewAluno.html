@@ -21,9 +21,10 @@
                 </div>
 
                 <div class="col-md-10">
-                    <h3 class="media-heading">{{ aluno.nome}}</h3>
+                    <h3 class="media-heading">{{ aluno.nome.upper()}}</h3>
                     <h3 class="media-heading">{{ aluno.matricula}}</h3>
-                    <h3 class="media-heading">{{ aluno.cpf}}</h3>
+                    <h3 class="media-heading">{{ aluno.cpf[0:3]}}.{{aluno.cpf[3:6]}}.{{aluno.cpf[6:9]}}-{{aluno.cpf[9:11]}}</h3>
+                   
                 </div>
             </div>
             <hr>
@@ -39,12 +40,12 @@
                 </div>
                 
                 <div class="col-md-10">
-                    <h3 class="media-heading">{{ aluno.endereco}}</h3>
-                    <h3 class="media-heading">{{ aluno.num}}</h3>
-                    <h3 class="media-heading">{{ aluno.complemento}}</h3>
-                    <h3 class="media-heading">{{ aluno.bairro}}</h3>
-                    <h3 class="media-heading">{{ aluno.cidade}}</h3>
-                    <h3 class="media-heading">{{ aluno.uf}}</h3>
+                    <h3 class="media-heading">{{ aluno.endereco.upper()}}</h3>
+                    <h3 class="media-heading">{{ aluno.num.upper()}}</h3>
+                    <h3 class="media-heading">{{ aluno.complemento.upper()}}</h3>
+                    <h3 class="media-heading">{{ aluno.bairro.upper()}}</h3>
+                    <h3 class="media-heading">{{ aluno.cidade.upper()}}</h3>
+                    <h3 class="media-heading">{{ aluno.uf.upper()}}</h3>
                 </div>
             </div>
         </div>
