@@ -16,6 +16,7 @@ class Pessoa(db.Model):
     cidade      = db.Column(db.String(50))
     uf          = db.Column(db.String(50))
     imagem      = db.Column(db.String(80))
+    data_cadastro = db.Column(db.String(12))
 
     telefone    = db.Column(db.String(15))
     

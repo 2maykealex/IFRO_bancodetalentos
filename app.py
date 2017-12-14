@@ -5,6 +5,8 @@ from flask_sqlalchemy import SQLAlchemy
 import models
 import config
 
+from datetime import datetime
+
 app = Flask(__name__)
 app.secret_key = 'super secret string' #Change this!
 
@@ -80,7 +82,8 @@ def post_aluno():
     aluno.bairro   = request.form['bairro']
     aluno.cidade   = request.form['cidade']
     aluno.uf   = request.form['uf']
-
+    aluno.data_cadastro = datetime.now()
+    
     models.db.session.add(aluno)
     models.db.session.commit()
     flash('Aluno registrado com sucesso!')
@@ -95,6 +98,7 @@ def post_empresa():
     empresa.bairro   = request.form['bairro'].upper()
     empresa.cidade   = request.form['cidade'].upper()
     empresa.uf   = request.form['uf'].upper()
+    empresa.data_cadastro = datetime.now()
 
     models.db.session.add(empresa)
     models.db.session.commit()
@@ -104,7 +108,7 @@ def post_empresa():
 @app.route('/post_vaga', methods=['POST']) #salvar um aluno no banco
 def post_vaga():
     vaga = models.Vaga()
-    vaga.data_inicio = '04/12/2014'.upper()
+    vaga.data_inicio = datetime.now()
     vaga.status      = 'ABERTA'.upper()
     vaga.descricao   = request.form['descricao'].upper()
     vaga.remuneracao = request.form['remuneracao'].upper()
