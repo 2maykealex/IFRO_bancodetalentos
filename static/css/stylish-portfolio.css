@@ -253,8 +253,18 @@ hr.small {
 /* Footer */
 
 footer {
-  padding: 100px 0;
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  height:30px;
+  width:100%;
+  background: #333;
+  color: aquamarine;
 }
+
+/* footer {
+  padding: 100px 0;
+} */
 
 #to-top {
   font-size: 1em;
