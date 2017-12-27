@@ -1,0 +1,86 @@
+{% extends 'base_ifro_view_edit.html' %}
+
+{% block titulo %} Index - {% endblock %}
+
+{% block conteudo %}
+
+<br>
+<br> 
+<div class="container col-md-11" >
+    <div class="row">            
+        <div class="modal-header col-md-12" style="background: cadetblue"> 
+            <div class="col-md-12">
+                <h1 class="modal-title text-center">Perfil do Aluno - Editando</h1>
+            </div>
+        </div>        
+    </div>
+    
+    <br>
+
+    <div class="row">
+
+        <div class="modal-header col-md-10" style="background: cadetblue"> 
+        
+            <div class="col-md-12">
+                <form class="form-horizontal" method="post" >
+                
+                    <div class="row">                        
+                        <div class="col-md-2">
+                            <h3><strong>Nome:</strong> </h3>
+                            <h3><strong>Matrícula:</strong></h3>
+                            <h3><strong>CPF:</strong></h3>
+                        </div>
+
+                        <div class="col-md-10 form-group">
+                            <input id="nome" name="nome" type="text" placeholder="Digite seu nome" class="form-control input-md" value = "{{ aluno.nome.upper()}}" required>
+                            <input id="matricula" name="matricula" type="text" placeholder="Digite sua matrícula" class="form-control input-md" value = "{{ aluno.matricula}}" required>
+                            <input id="cpf" name="cpf" type="text" placeholder="Digite seu cpf" class="form-control input-md" value = "{{ aluno.cpf[0:3]}}.{{aluno.cpf[3:6]}}.{{aluno.cpf[6:9]}}-{{aluno.cpf[9:11]}}" required>
+                        </div>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="row">
+                        <div class="col-md-2">
+                            <h3><strong>Endereço: </strong></h3>
+                            <h3><strong>Número: </strong></h3>
+                            <h3><strong>Complemento: </strong></h3>
+                            <h3><strong>Bairro: </strong></h3>
+                            <h3><strong>Cidade: </strong></h3>
+                            <h3><strong>Estado: </strong></h3>
+                        </div>
+                        
+                        <div class="col-md-10 form-group">
+                            <input id="endereco" name="endereco" type="text" placeholder="Digite seu endereço" class="form-control input-md" value = "{{ aluno.endereco.upper()}}" required>
+                            <input id="num" name="num" type="text" placeholder="Digite o número" class="form-control input-md" value = "{{ aluno.num.upper()}}" required>
+                            <input id="complemento" name="complemento" type="text" placeholder="Digite o complemento" class="form-control input-md" value = "{{ aluno.complemento.upper()}}" required>
+                            <input id="bairro" name="bairro" type="text" placeholder="Digite seu bairro" class="form-control input-md" value = "{{ aluno.bairro.upper()}}" required>
+                            <input id="cidade" name="cidade" type="text" placeholder="Digite sua cidade" class="form-control input-md" value = "{{ aluno.cidade.upper()}}" required>
+                            <input id="uf" name="uf" type="text" placeholder="Digite seu Estado" class="form-control input-md" value = "{{ aluno.uf.upper()}}" required>
+                            
+                        </div>
+                    </div>
+                    <button class="btn btn-lg btn-success btn-block" type="submit">Salvar</button>
+                </form>
+            </div>          
+        </div>
+
+        <div class="col-md-2">
+            <div class="modal-header " style="background: cadetblue">
+                <img src="../../static/img/pessoasImg/{{aluno.imagem}}.jpg" name="aboutme" width="200" height="200" border="0" class="img-circle">
+            </div>
+            
+            <a href="/viewAluno/{{aluno.id}}/" class="btn btn-warning">Voltar</a>
+
+            <a href="/editarAluno/{{aluno.id}}/" class="btn btn-primary">Editar</a>
+
+            <a href="/inativarAluno/{{aluno.id}}/" class="btn btn-danger">Inativar</a>
+            
+        </div>
+    </div>
+
+</div>
+        
+
+
+{% endblock %}

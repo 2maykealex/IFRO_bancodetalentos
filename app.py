@@ -164,6 +164,12 @@ def cadVaga():
     empresas = models.Empresa.query.all()
     return render_template('cadVaga.html', empresas=empresas)
 
+@app.route('/editarAluno/<idAluno>/')    #Abrir Formulário de cadastro de aluno
+def editarAluno(idAluno):
+    aluno = models.Aluno.query.filter_by(id=idAluno).first()
+    return render_template('editarAluno.html', aluno=aluno)
+
+
 @app.route('/fale_conosco')
 def fale_conosco():
     return render_template('fale_conosco.html')
