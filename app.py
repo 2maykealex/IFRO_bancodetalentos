@@ -169,6 +169,30 @@ def editarAluno(idAluno):
     aluno = models.Aluno.query.filter_by(id=idAluno).first()
     return render_template('editarAluno.html', aluno=aluno)
 
+@app.route('/updateAluno/<idAluno>', methods=['POST']) #salvar um aluno no banco
+def updateAluno(idAluno):
+
+    aluno = models.Aluno.query.filter_by(id=idAluno).first()
+    cpfAluno = "{}{}{}{}".format(request.form['cpf'][0:3], request.form['cpf'][4:7], request.form['cpf'][8:11], request.form['cpf'][12:14] )    
+    aluno.cpf          = cpfAluno
+    aluno.matricula    = request.form['matricula'].upper()
+    aluno.nome         = request.form['nome'].upper()
+    aluno.telefone     = request.form['telefone']
+    aluno.email        = request.form['email']    
+    aluno.tipo         = 2
+    aluno.endereco     = request.form['endereco']
+    aluno.num          = request.form['num']
+    aluno.complemento  = request.form['complemento']
+    aluno.bairro       = request.form['bairro']
+    aluno.cidade       = request.form['cidade']
+    aluno.uf           = request.form['uf']
+    
+    models.db.session.commit()
+    flash('Aluno atualizado com sucesso!')
+
+    # url = "/editarAluno/{}".format(idAluno)
+    return redirect(url_for('editarAluno', idAluno=idAluno, atualizado = True) )
+
 
 @app.route('/fale_conosco')
 def fale_conosco():
