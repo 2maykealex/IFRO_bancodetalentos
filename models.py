@@ -30,7 +30,7 @@ class Pessoa(db.Model):
     #telefones = db.relationship("Telefone", backref="pessoa-telefones", lazy='dynamic')
     #emails    = db.relationship("Email",    backref="pessoa-emails",    lazy='dynamic')
 
-    def __init__(self, nome, email, password, tipo):
+    def __init__(self, nome="", email="", password="", tipo=""):
         self.nome = nome
         self.email = email
         self.password = password
