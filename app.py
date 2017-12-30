@@ -167,7 +167,7 @@ def cadVaga():
 @app.route('/editarAluno/<idAluno>/')    #Abrir Formulário de cadastro de aluno
 def editarAluno(idAluno):
     aluno = models.Aluno.query.filter_by(id=idAluno).first()
-    return render_template('editarAluno.html', aluno=aluno)
+    return render_template('editarAluno.html', aluno=aluno, atualizado = False)
 
 @app.route('/updateAluno/<idAluno>', methods=['POST']) #salvar um aluno no banco
 def updateAluno(idAluno):
